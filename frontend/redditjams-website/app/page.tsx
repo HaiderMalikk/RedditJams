@@ -58,7 +58,7 @@ export default function Home() {
                   AI-Powered Results
                 </h4>
                 <p className="text-sm text-gray-700">
-                  GPT-4 analyzes everything and delivers 5 personalized song
+                  AI everything and delivers 5 personalized song
                   recommendations with Spotify links
                 </p>
               </div>
@@ -94,9 +94,13 @@ export default function Home() {
                     Spotify Web Player
                   </a>
                 </p>
-                <div className="h-48 rounded-lg bg-gray-200 flex items-center justify-center text-gray-500">
-                  [Screenshot placeholder: Spotify app/web interface]
-                </div>
+                <Image
+                  src="/step1.png"
+                  alt="Spotify app interface"
+                  width={800}
+                  height={400}
+                  className="w-full rounded-lg border border-gray-300"
+                />
               </div>
             </div>
 
@@ -114,9 +118,13 @@ export default function Home() {
                 <p className="mb-4 text-gray-700">
                   Go to the playlist you want recommendations for
                 </p>
-                <div className="h-48 rounded-lg bg-gray-200 flex items-center justify-center text-gray-500">
-                  [Screenshot placeholder: Playlist view]
-                </div>
+                <Image
+                  src="/step2.png"
+                  alt="Playlist view"
+                  width={800}
+                  height={400}
+                  className="w-full rounded-lg border border-gray-300"
+                />
               </div>
             </div>
 
@@ -134,9 +142,13 @@ export default function Home() {
                 <p className="mb-4 text-gray-700">
                   Click on the three dots menu button on your playlist
                 </p>
-                <div className="h-48 rounded-lg bg-gray-200 flex items-center justify-center text-gray-500">
-                  [Screenshot placeholder: Three dots menu]
-                </div>
+                <Image
+                  src="/step3.png"
+                  alt="Three dots menu"
+                  width={800}
+                  height={400}
+                  className="w-full rounded-lg border border-gray-300"
+                />
               </div>
             </div>
 
@@ -149,15 +161,19 @@ export default function Home() {
               </div>
               <div className="flex-1">
                 <h4 className="mb-2 text-xl font-semibold text-black">
-                  Make Sure Your Playlist is Public <span className="text-sm text-primary">(Important!)</span>
+                  Make Sure Your Playlist is Public <span className="text-md text-primary">(Important!)</span>
                 </h4>
                 <p className="mb-4 text-gray-700">
-                  In the same three dots menu, look for the option to make your playlist public if it isn't already. 
-                  <span className="font-semibold text-black"> We can only access public playlists.</span> Don't worry, you can make it private again after using RedditJams!
+                  In the same three dots menu, look for the option to make your playlist public if it isn't already. Do this by selecting <span className="font-semibold text-black">"Make Public"</span> or <span className="font-semibold text-black">"Add to profile"</span>.
+                  <span className="font-semibold text-black"> We can only access public playlists!</span> Don't worry, you can make it private again after using RedditJams!
                 </p>
-                <div className="h-48 rounded-lg bg-gray-200 flex items-center justify-center text-gray-500">
-                  [Screenshot placeholder: Make playlist public option in menu]
-                </div>
+                <Image
+                  src="/public-step.png"
+                  alt="Make playlist public option"
+                  width={800}
+                  height={400}
+                  className="w-full rounded-lg border border-gray-300"
+                />
               </div>
             </div>
 
@@ -173,12 +189,16 @@ export default function Home() {
                   Select "Share" → "Copy Link to Playlist"
                 </h4>
                 <p className="mb-4 text-gray-700">
-                  From the menu, hover over Share and click "Copy link to
-                  playlist"
+                  From the menu, hover over Share and click  <span className="font-semibold text-black"> "Copy link to
+                  playlist"</span> 
                 </p>
-                <div className="h-48 rounded-lg bg-gray-200 flex items-center justify-center text-gray-500">
-                  [Screenshot placeholder: Share menu with copy link option]
-                </div>
+                <Image
+                  src="/step4.png"
+                  alt="Share menu with copy link option"
+                  width={800}
+                  height={400}
+                  className="w-full rounded-lg border border-gray-300"
+                />
               </div>
             </div>
 
