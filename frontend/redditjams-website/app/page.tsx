@@ -211,9 +211,9 @@ export default function Home() {
       {/* Footer */}
       <footer className="border-t-2 border-black bg-black px-8 py-12 text-white">
         <div className="mx-auto max-w-7xl">
-          <div className="grid grid-cols-3 gap-8 items-start">
-            {/* Left: Logo */}
-            <div className="flex justify-start">
+          <div className="flex items-start justify-between gap-24">
+            {/* Logo */}
+            <div className="flex-shrink-0">
               <Image
                 src="/logo.svg"
                 alt="RedditJams Logo"
@@ -222,12 +222,12 @@ export default function Home() {
               />
             </div>
 
-            {/* Middle: About and Links */}
-            <div className="flex gap-8">
+            {/* About, Links, and Creator - equally spaced */}
+            <div className="flex flex-1 justify-between gap-16">
               {/* About */}
               <div className="flex-1">
                 <h4 className="mb-4 text-lg font-bold text-primary">About</h4>
-                <p className="text-sm text-gray-300">
+                <p className="text-sm text-gray-300 max-w-xs">
                   RedditJams is an intelligent music recommendation system that
                   combines Spotify data, Reddit community insights, and AI to help
                   you discover your next favorite songs.
@@ -235,7 +235,7 @@ export default function Home() {
               </div>
 
               {/* Links */}
-              <div>
+              <div className="flex-1">
                 <h4 className="mb-4 text-lg font-bold text-primary">Links</h4>
                 <ul className="space-y-2 text-sm">
                   <li>
@@ -260,11 +260,9 @@ export default function Home() {
                   </li>
                 </ul>
               </div>
-            </div>
 
-            {/* Right: Creator */}
-            <div className="flex justify-end">
-              <div>
+              {/* Creator */}
+              <div className="flex-1">
                 <h4 className="mb-4 text-lg font-bold text-primary">Creator</h4>
                 <p className="text-sm text-gray-300">
                   Built with by{" "}
@@ -272,7 +270,7 @@ export default function Home() {
                     href="https://www.haidercodes.com"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-white transition-colors hover:text-primary"
+                    className="text-white transition-colors hover:text-primary font-semibold"
                   >
                     Haider Malik
                   </a>
