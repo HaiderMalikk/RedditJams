@@ -84,9 +84,10 @@ The API returns a JSON object with your personalized recommendations:
   "metadata": {
     "total_tracks_analyzed": 69,
     "reddit_posts_found": 62,
-    "recommendations_requested": 5,
-    "recommendations_found": 5
+    "recommendations_requested": 2,
+    "recommendations_found": 2,
   }
+  "error": null
 }
 ```
 
