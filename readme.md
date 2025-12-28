@@ -1,4 +1,4 @@
-![alt text](assets/logowithtext.svg)
+![alt text](assets/logowtext.svg)
 
 # RedditJams - Music Recommendation APP
 
