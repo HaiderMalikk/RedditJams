@@ -18,7 +18,3 @@ body {
   color: var(--foreground);
   font-family: var(--font-montserrat), sans-serif;
 }
-
-a {
-  text-decoration: none;
-}
