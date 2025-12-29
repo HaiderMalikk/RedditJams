@@ -2,21 +2,21 @@ import Image from "next/image";
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-white font-sans overflow-x-hidden">
+    <div className="min-h-screen overflow-x-hidden bg-white font-sans">
       {/* Main Content */}
-      <main className="mx-auto max-w-7xl px-4 md:px-8 py-12">
+      <main className="mx-auto max-w-7xl px-4 py-12 md:px-8">
         {/* Welcome Section with Input */}
         <section className="mb-20 text-center">
           <h2 className="mb-8 text-4xl font-bold text-black">
             Welcome to Reddit<span className="text-primary">Jams</span>
           </h2>
-          <div className="mx-auto flex flex-col md:flex-row max-w-2xl gap-4">
+          <div className="mx-auto flex max-w-2xl flex-col gap-4 md:flex-row">
             <input
               type="text"
               placeholder="Paste Spotify playlist link..."
-              className="flex-1 rounded-lg border-2 border-black px-6 py-4 text-black placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary"
+              className="focus:ring-primary flex-1 rounded-lg border-2 border-black px-6 py-4 text-black placeholder-gray-400 focus:ring-2 focus:outline-none"
             />
-            <button className="rounded-lg bg-primary px-8 py-4 font-semibold text-white transition-colors hover:bg-[#E63D00] md:whitespace-nowrap">
+            <button className="bg-primary rounded-lg px-8 py-4 font-semibold text-white transition-colors hover:bg-[#E63D00] md:whitespace-nowrap">
               Start
             </button>
           </div>
@@ -25,17 +25,17 @@ export default function Home() {
         {/* Info Section */}
         <section className="mb-20">
           <div className="rounded-lg border-2 border-black bg-white p-8 shadow-lg">
-            <h3 className="mb-4 text-center text-2xl font-bold text-primary">
+            <h3 className="text-primary mb-4 text-center text-2xl font-bold">
               Discover Your Next Favorite Song
             </h3>
             <p className="mb-6 text-center text-lg text-black">
               RedditJams analyzes your Spotify playlist, searches Reddit's music
-              community, and uses AI to generate personalized song recommendations
-              just for you.
+              community, and uses AI to generate personalized song
+              recommendations just for you.
             </p>
             <div className="grid gap-6 md:grid-cols-3">
               <div className="text-center">
-                <div className="mb-2 text-4xl font-bold text-primary">1</div>
+                <div className="text-primary mb-2 text-4xl font-bold">1</div>
                 <h4 className="mb-2 font-semibold text-black">
                   Analyze Your Playlist
                 </h4>
@@ -45,7 +45,7 @@ export default function Home() {
                 </p>
               </div>
               <div className="text-center">
-                <div className="mb-2 text-4xl font-bold text-primary">2</div>
+                <div className="text-primary mb-2 text-4xl font-bold">2</div>
                 <h4 className="mb-2 font-semibold text-black">Search Reddit</h4>
                 <p className="text-sm text-gray-700">
                   We find music recommendation posts from r/music community that
@@ -53,13 +53,13 @@ export default function Home() {
                 </p>
               </div>
               <div className="text-center">
-                <div className="mb-2 text-4xl font-bold text-primary">3</div>
+                <div className="text-primary mb-2 text-4xl font-bold">3</div>
                 <h4 className="mb-2 font-semibold text-black">
                   AI-Powered Results
                 </h4>
                 <p className="text-sm text-gray-700">
-                  AI everything and delivers 5 personalized song
-                  recommendations with Spotify links
+                  AI everything and delivers 5 personalized song recommendations
+                  with Spotify links
                 </p>
               </div>
             </div>
@@ -75,7 +75,7 @@ export default function Home() {
             {/* Step 1 */}
             <div className="flex gap-6 rounded-lg border-2 border-black p-6">
               <div className="flex-shrink-0">
-                <div className="flex h-12 w-12 items-center justify-center rounded-full bg-primary text-xl font-bold text-white">
+                <div className="bg-primary flex h-12 w-12 items-center justify-center rounded-full text-xl font-bold text-white">
                   1
                 </div>
               </div>
@@ -89,7 +89,7 @@ export default function Home() {
                     href="https://open.spotify.com"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="font-semibold text-primary hover:underline"
+                    className="text-primary font-semibold hover:underline"
                   >
                     Spotify Web Player
                   </a>
@@ -107,7 +107,7 @@ export default function Home() {
             {/* Step 2 */}
             <div className="flex gap-6 rounded-lg border-2 border-black p-6">
               <div className="flex-shrink-0">
-                <div className="flex h-12 w-12 items-center justify-center rounded-full bg-primary text-xl font-bold text-white">
+                <div className="bg-primary flex h-12 w-12 items-center justify-center rounded-full text-xl font-bold text-white">
                   2
                 </div>
               </div>
@@ -131,7 +131,7 @@ export default function Home() {
             {/* Step 3 */}
             <div className="flex gap-6 rounded-lg border-2 border-black p-6">
               <div className="flex-shrink-0">
-                <div className="flex h-12 w-12 items-center justify-center rounded-full bg-primary text-xl font-bold text-white">
+                <div className="bg-primary flex h-12 w-12 items-center justify-center rounded-full text-xl font-bold text-white">
                   3
                 </div>
               </div>
@@ -153,19 +153,34 @@ export default function Home() {
             </div>
 
             {/* Step 3.5 - Optional */}
-            <div className="flex gap-6 rounded-lg border-2 border-primary bg-primary/5 p-6">
+            <div className="border-primary bg-primary/5 flex gap-6 rounded-lg border-2 p-6">
               <div className="flex-shrink-0">
-                <div className="flex h-12 w-12 items-center justify-center rounded-full bg-white border-2 border-primary text-xl font-bold text-primary">
+                <div className="border-primary text-primary flex h-12 w-12 items-center justify-center rounded-full border-2 bg-white text-xl font-bold">
                   ⚠️
                 </div>
               </div>
               <div className="flex-1">
                 <h4 className="mb-2 text-xl font-semibold text-black">
-                  Make Sure Your Playlist is Public <span className="text-md text-primary">(Important!)</span>
+                  Make Sure Your Playlist is Public{" "}
+                  <span className="text-md text-primary">(Important!)</span>
                 </h4>
                 <p className="mb-4 text-gray-700">
-                  In the same three dots menu, look for the option to make your playlist public if it isn't already. Do this by selecting <span className="font-semibold text-black">"Make Public"</span> or <span className="font-semibold text-black">"Add to profile"</span>.
-                  <span className="font-semibold text-black"> We can only access public playlists!</span> Don't worry, you can make it private again after using RedditJams!
+                  In the same three dots menu, look for the option to make your
+                  playlist public if it isn't already. Do this by selecting{" "}
+                  <span className="font-semibold text-black">
+                    "Make Public"
+                  </span>{" "}
+                  or{" "}
+                  <span className="font-semibold text-black">
+                    "Add to profile"
+                  </span>
+                  .
+                  <span className="font-semibold text-black">
+                    {" "}
+                    We can only access public playlists!
+                  </span>{" "}
+                  Don't worry, you can make it private again after using
+                  RedditJams!
                 </p>
                 <Image
                   src="/public-step.png"
@@ -180,7 +195,7 @@ export default function Home() {
             {/* Step 4 */}
             <div className="flex gap-6 rounded-lg border-2 border-black p-6">
               <div className="flex-shrink-0">
-                <div className="flex h-12 w-12 items-center justify-center rounded-full bg-primary text-xl font-bold text-white">
+                <div className="bg-primary flex h-12 w-12 items-center justify-center rounded-full text-xl font-bold text-white">
                   4
                 </div>
               </div>
@@ -189,8 +204,11 @@ export default function Home() {
                   Select "Share" → "Copy Link to Playlist"
                 </h4>
                 <p className="mb-4 text-gray-700">
-                  From the menu, hover over Share and click  <span className="font-semibold text-black"> "Copy link to
-                  playlist"</span> 
+                  From the menu, hover over Share and click{" "}
+                  <span className="font-semibold text-black">
+                    {" "}
+                    "Copy link to playlist"
+                  </span>
                 </p>
                 <Image
                   src="/step4.png"
@@ -205,21 +223,22 @@ export default function Home() {
             {/* Step 5 */}
             <div className="flex gap-6 rounded-lg border-2 border-black p-6">
               <div className="flex-shrink-0">
-                <div className="flex h-12 w-12 items-center justify-center rounded-full bg-primary text-xl font-bold text-white">
+                <div className="bg-primary flex h-12 w-12 items-center justify-center rounded-full text-xl font-bold text-white">
                   5
                 </div>
               </div>
-              <div className="flex-1 min-w-0">
+              <div className="min-w-0 flex-1">
                 <h4 className="mb-2 text-xl font-semibold text-black">
                   Paste the Link Above
                 </h4>
                 <p className="mb-4 text-gray-700">
-                  Paste the copied public playlist link into the input field at the top of this
-                  page and click Start!
+                  Paste the copied public playlist link into the input field at
+                  the top of this page and click Start!
                 </p>
-                <div className="rounded-lg bg-primary/10 p-4 overflow-x-auto">
-                  <p className="font-mono text-sm text-black break-all">
-                    Example: https://open.spotify.com/playlist/3XyDvjoxiae0oWpfJ4kga9
+                <div className="bg-primary/10 overflow-x-auto rounded-lg p-4">
+                  <p className="font-mono text-sm break-all text-black">
+                    Example:
+                    https://open.spotify.com/playlist/3XyDvjoxiae0oWpfJ4kga9
                   </p>
                 </div>
               </div>
@@ -229,11 +248,11 @@ export default function Home() {
       </main>
 
       {/* Footer */}
-      <footer className="border-t-2 border-black bg-black px-4 md:px-8 py-12 text-white">
+      <footer className="border-t-2 border-black bg-black px-4 py-12 text-white md:px-8">
         <div className="mx-auto max-w-7xl">
-          <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-8 md:gap-24">
+          <div className="flex flex-col gap-8 md:flex-row md:items-start md:justify-between md:gap-24">
             {/* Logo - top on mobile, left on desktop */}
-            <div className="flex-shrink-0 hidden md:block">
+            <div className="hidden flex-shrink-0 md:block">
               <Image
                 src="/logo.svg"
                 alt="RedditJams Logo"
@@ -243,27 +262,27 @@ export default function Home() {
             </div>
 
             {/* About, Links, and Creator - equally spaced */}
-            <div className="flex flex-col md:flex-row flex-1 md:justify-between gap-8 md:gap-16">
+            <div className="flex flex-1 flex-col gap-8 md:flex-row md:justify-between md:gap-16">
               {/* About */}
               <div className="flex-1">
-                <h4 className="mb-4 text-lg font-bold text-primary">About</h4>
+                <h4 className="text-primary mb-4 text-lg font-bold">About</h4>
                 <p className="text-sm text-gray-300 md:max-w-xs">
                   RedditJams is an intelligent music recommendation system that
-                  combines Spotify data, Reddit community insights, and AI to help
-                  you discover your next favorite songs.
+                  combines Spotify data, Reddit community insights, and AI to
+                  help you discover your next favorite songs.
                 </p>
               </div>
 
               {/* Links */}
               <div className="flex-1">
-                <h4 className="mb-4 text-lg font-bold text-primary">Links</h4>
+                <h4 className="text-primary mb-4 text-lg font-bold">Links</h4>
                 <ul className="space-y-2 text-sm">
                   <li>
                     <a
                       href="https://github.com/HaiderMalikk/RedditJams"
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-gray-300 transition-colors hover:text-primary"
+                      className="hover:text-primary text-gray-300 transition-colors"
                     >
                       Source Code
                     </a>
@@ -273,7 +292,7 @@ export default function Home() {
                       href="https://github.com/HaiderMalikk/RedditJams/blob/master/licence"
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-gray-300 transition-colors hover:text-primary"
+                      className="hover:text-primary text-gray-300 transition-colors"
                     >
                       License
                     </a>
@@ -283,14 +302,14 @@ export default function Home() {
 
               {/* Creator */}
               <div className="flex-1">
-                <h4 className="mb-4 text-lg font-bold text-primary">Creator</h4>
+                <h4 className="text-primary mb-4 text-lg font-bold">Creator</h4>
                 <p className="text-sm text-gray-300">
                   Built with by{" "}
                   <a
                     href="https://www.haidercodes.com"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-white transition-colors hover:text-primary font-semibold"
+                    className="hover:text-primary font-semibold text-white transition-colors"
                   >
                     Haider Malik
                   </a>
@@ -302,7 +321,7 @@ export default function Home() {
             </div>
 
             {/* Logo - bottom center on mobile only */}
-            <div className="flex justify-center md:hidden mt-8">
+            <div className="mt-8 flex justify-center md:hidden">
               <Image
                 src="/logo.svg"
                 alt="RedditJams Logo"

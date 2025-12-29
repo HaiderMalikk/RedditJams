@@ -8,6 +8,7 @@ import requests
 
 BASE_URL = "https://reddit-jams-backend.vercel.app"
 
+
 def test_health_check():
     """Test health check endpoint"""
     response = requests.get(f"{BASE_URL}/api/health")
@@ -34,7 +35,7 @@ def test_successful_recommendation():
     response = requests.post(
         f"{BASE_URL}/api/recommendations",
         json=payload,
-        timeout=120  # Increased timeout for processing
+        timeout=120,  # Increased timeout for processing
     )
     assert response.status_code == 200
     data = response.json()
@@ -51,9 +52,7 @@ def test_private_playlist_error():
         "playlist_url": "https://open.spotify.com/playlist/7w46rm4NCAbC8aExBlYeNR?si=5754b28e10d64c85&nd=1&dlsi=2cb7428bb7744793"
     }
     response = requests.post(
-        f"{BASE_URL}/api/recommendations",
-        json=payload,
-        timeout=30
+        f"{BASE_URL}/api/recommendations", json=payload, timeout=30
     )
     assert response.status_code == 200
     data = response.json()
@@ -64,13 +63,9 @@ def test_private_playlist_error():
 
 def test_invalid_playlist_url():
     """Test invalid/non-existent playlist URL"""
-    payload = {
-        "playlist_url": "https://open.spotify.com/playlist/7w46rm4NCAbC8aExBlNR"
-    }
+    payload = {"playlist_url": "https://open.spotify.com/playlist/7w46rm4NCAbC8aExBlNR"}
     response = requests.post(
-        f"{BASE_URL}/api/recommendations",
-        json=payload,
-        timeout=30
+        f"{BASE_URL}/api/recommendations", json=payload, timeout=30
     )
     assert response.status_code == 200
     data = response.json()
@@ -83,9 +78,7 @@ def test_malformed_request():
     """Test malformed request without playlist_url"""
     payload = {}
     response = requests.post(
-        f"{BASE_URL}/api/recommendations",
-        json=payload,
-        timeout=30
+        f"{BASE_URL}/api/recommendations", json=payload, timeout=30
     )
     assert response.status_code == 422  # Validation error
 

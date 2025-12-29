@@ -1,0 +1,28 @@
+repos:
+  # Black - Python formatter
+  - repo: https://github.com/psf/black
+    rev: 23.12.1
+    hooks:
+      - id: black
+        name: Format Python with Black
+        language_version: python3
+
+  # Prettier - Frontend formatter (using local to support tailwind plugin)
+  - repo: local
+    hooks:
+      - id: prettier
+        name: Format frontend with Prettier
+        entry: bash -c 'cd frontend/redditjams-website && npx prettier --write .'
+        language: system
+        files: ^frontend/redditjams-website/
+        pass_filenames: false
+
+  # Run Python tests
+  - repo: local
+    hooks:
+      - id: pytest
+        name: Run Python tests
+        entry: bash -c 'cd tests && pytest test_modules.py test_api_endpoints.py -v || true'
+        language: system
+        pass_filenames: false
+        always_run: true

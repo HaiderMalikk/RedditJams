@@ -11,14 +11,24 @@ const montserrat = Montserrat({
 
 export const metadata: Metadata = {
   title: "RedditJams - Discover Music With Reddit",
-  description: "Discover trending music and create Spotify playlists from your favorite Reddit communities. Find new songs shared across Reddit's music subreddits. Created by Haider Malik",
-  keywords: ["Reddit", "music", "Spotify", "playlist", "discover music", "reddit music", "music discovery"],
+  description:
+    "Discover trending music and create Spotify playlists from your favorite Reddit communities. Find new songs shared across Reddit's music subreddits. Created by Haider Malik",
+  keywords: [
+    "Reddit",
+    "music",
+    "Spotify",
+    "playlist",
+    "discover music",
+    "reddit music",
+    "music discovery",
+  ],
   authors: [{ name: "RedditJams" }],
   creator: "RedditJams",
   publisher: "RedditJams",
   openGraph: {
     title: "RedditJams - Discover Music With Reddit",
-    description: "Discover trending music and create Spotify playlists from your favorite Reddit communities.",
+    description:
+      "Discover trending music and create Spotify playlists from your favorite Reddit communities.",
     url: "https://redditjams.com",
     siteName: "RedditJams",
     type: "website",
@@ -27,7 +37,8 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "RedditJams - Discover Music With Reddit",
-    description: "Discover trending music and create Spotify playlists from your favorite Reddit communities.",
+    description:
+      "Discover trending music and create Spotify playlists from your favorite Reddit communities.",
     creator: "@redditjams",
   },
   robots: {
