@@ -10,7 +10,7 @@
 
 Simply provide a **Spotify playlist URL**, and RedditJams will:
 
-1. **Analyze your playlist** - Extracts your top tracks and artists based on popularity
+1. **Analyze your playlist** - Extracts diverse tracks and artists (top, bottom, and random) for broader coverage
 2. **Search Reddit** - Finds music recommendation posts/threads from r/music community
 3. **AI Analysis** - Uses GPT-4 to analyze both your taste and Reddit recommendations
 4. **Return Results** - Delivers 5 personalized song recommendations with Spotify links
@@ -129,23 +129,31 @@ RedditJams uses a multi-step process to generate highly personalized recommendat
 #### **Step 1: Playlist Analysis**
 - Connects to Spotify API using your playlist URL
 - Extracts all tracks with metadata (name, artist, popularity, etc.)
-- Identifies your **top 5 most popular tracks**
-- Identifies your **top 3 most frequent artists**
+- Selects **9 diverse tracks** for analysis (configurable):
+  - **Top 3** most popular tracks (NUM_TOP_TRACKS = 3)
+  - **Bottom 3** least popular tracks (NUM_BOTTOM_TRACKS = 3)
+  - **3 random** tracks from the middle range (NUM_RANDOM_TRACKS = 3)
+- Selects **6 diverse artists** for analysis (configurable):
+  - **Top 2** artists from your playlist (NUM_TOP_ARTISTS = 2)
+  - **Bottom 2** artists from your playlist (NUM_BOTTOM_ARTISTS = 2)
+  - **2 random** artists from the middle range (NUM_RANDOM_ARTISTS = 2)
 
 #### **Step 2: Reddit Community Search (Parallel)**
 The system searches Reddit's r/music community in parallel for similar music tastes:
 
-**Track-Based Searches (5 parallel queries):**
-- For each of your top 5 tracks, searches Reddit for: `"[track name] [artist] recommend"`
+**Track-Based Searches (9 parallel queries):**
+- For each of your 9 diverse tracks, searches Reddit for: `"[track name] [artist] recommend"`
 - Example: `"Running Up That Hill Kate Bush recommend"`
-- Finds posts where users recommend songs similar to your favorites
+- Finds posts where users recommend songs similar to your selections
+- Includes top hits, hidden gems, and random discoveries from your playlist
 
-**Artist-Based Searches (3 parallel queries):**
-- For each of your top 3 artists, searches Reddit for: `"[artist name] recommend similar"`
+**Artist-Based Searches (6 parallel queries):**
+- For each of your 6 diverse artists, searches Reddit for: `"[artist name] recommend similar"`
 - Example: `"Kate Bush recommend similar"`
-- Finds posts recommending artists/songs similar to your favorites
+- Finds posts recommending artists/songs similar to your selections
+- Covers well-known and lesser-known artists from your library
 
-**Total: 8 simultaneous Reddit searches** - All executed in parallel for maximum speed
+**Total: 15 simultaneous Reddit searches** - All executed in parallel for maximum speed and diversity
 
 **Keyword Filtering:**
 Only keeps posts/comments containing recommendation keywords:
@@ -186,8 +194,12 @@ The API uses the following default configuration:
 | Subreddit | `music` | Reddit community to search |
 | Reddit Posts Per Query | 20 | Max posts to fetch per search |
 | Comments Per Post | 30 | Max comments to analyze per post |
-| Top Tracks | 5 | Number of top tracks to analyze |
-| Top Artists | 3 | Number of top artists to analyze |
+| Top Tracks | 3 | Number of most popular tracks to analyze |
+| Bottom Tracks | 3 | Number of least popular tracks to analyze |
+| Random Tracks | 3 | Number of random tracks to analyze (total = 9) |
+| Top Artists | 2 | Number of top artists to analyze |
+| Bottom Artists | 2 | Number of bottom artists to analyze |
+| Random Artists | 2 | Number of random artists to analyze (total = 6) |
 | Recommendations | 5 | Number of songs to recommend |
 | GPT Model | `gpt-4o-mini` | AI model for analysis |
 | GPT Temperature | 0.7 | Creativity level (0-1) |
@@ -198,11 +210,13 @@ The API uses the following default configuration:
 
 **Community Intelligence:** Reddit's music community shares authentic recommendations based on real listening experiences, not just algorithmic similarities.
 
+**Diverse Selection:** Analyzes top hits, hidden gems, and random discoveries from your playlist, ensuring recommendations aren't biased toward only your most popular tracks.
+
 **Multi-Source Analysis:** Combines your actual playlist data with community wisdom, providing recommendations that are both personalized AND discovery-oriented.
 
 **AI Understanding:** GPT-4 understands music context, genres, moods, and can identify nuanced patterns that simple collaborative filtering misses.
 
-**Parallel Processing:** All Reddit searches run simultaneously using async/await, making the API fast despite searching multiple queries.
+**Parallel Processing:** All 15 Reddit searches run simultaneously using async/await, making the API fast despite searching multiple queries.
 
 **Real Spotify Integration:** Every recommendation is verified on Spotify with full metadata, ensuring you can instantly play any suggested song.
 
@@ -243,10 +257,10 @@ Opens interactive Swagger UI documentation where you can test the API directly i
 
 **What Happens:**
 1. Analyzes 69 tracks from your playlist
-2. Identifies top tracks: "DAISIES", "Running Up That Hill", "Lover, You Should've Come Over"
-3. Identifies top artists: "Kate Bush", "Fleetwood Mac", "Jeff Buckley"
-4. Searches Reddit for 8 different recommendation queries in parallel
-5. Finds 62 Reddit posts with music recommendations
+2. Selects 9 diverse tracks (top 3, bottom 3, random 3) for broader coverage
+3. Selects 6 diverse artists (top 2, bottom 2, random 2) for varied perspectives
+4. Searches Reddit for 15 different recommendation queries in parallel
+5. Finds 62+ Reddit posts with music recommendations
 6. GPT-4 analyzes all data and suggests 5 new songs
 7. Verifies all songs exist on Spotify
 8. Returns complete track information with links

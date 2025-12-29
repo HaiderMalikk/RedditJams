@@ -1,4 +1,15 @@
 repos:
+  # Auto-stage all changes before commit
+  - repo: local
+    hooks:
+      - id: auto-stage
+        name: Auto-stage all changes
+        entry: git add -A
+        language: system
+        pass_filenames: false
+        always_run: true
+        stages: [commit]
+
   # Black - Python formatter
   - repo: https://github.com/psf/black
     rev: 23.12.1

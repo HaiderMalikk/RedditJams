@@ -28,19 +28,23 @@ REDDIT_USER_AGENT: str | None = os.getenv("REDDIT_USER_AGENT")
 OPENAI_API_KEY: str | None = os.getenv("OPENAI_API_KEY")
 
 # GPT Model Configuration
-GPT_MODEL: str = "gpt-4o-mini"
-GPT_TEMPERATURE: float = 0.7
-GPT_MAX_TOKENS: int = 500
+GPT_MODEL: str = "gpt-4o-mini"  # model
+GPT_TEMPERATURE: float = 0.7  # creativity level (thi is complicated curr 0.7 is working well but too high and you're not utilizing reddit data enough too low and you're trusting gpt too much)
+GPT_MAX_TOKENS: int = 500  # max tokens for response (500 should be sufficient for recommendations this is output length not input length)
 
 # Reddit Configuration
-SUBREDDIT_NAME: str = "music"
-MAX_REDDIT_POSTS_PER_QUERY: int = 20
-MAX_COMMENTS_PER_POST: int = 30
+SUBREDDIT_NAME: str = "music"  # subreddit to search for recommendations (this is the obvious default beacuse its far popular than any other music related subreddit)
+MAX_REDDIT_POSTS_PER_QUERY: int = 20  # max posts to fetch per track/artist query (too high and your getting too much data especially since some songs might have more reddit posts about them than others which would vanash low popularity songs)
+MAX_COMMENTS_PER_POST: int = 30  # max comments to fetch per reddit post (too high and you're getting a lot of irrelevant data noise, these are mostly empty beacuse this subreddit has alot of low engagement posts, not a bad thing)
 
 # Analysis Configuration
-NUM_TOP_TRACKS: int = 5
-NUM_TOP_ARTISTS: int = 3
-NUM_RECOMMENDATIONS: int = 5
+NUM_TOP_TRACKS: int = 3  # number of most popular tracks to analyze
+NUM_BOTTOM_TRACKS: int = 3  # number of least popular tracks to analyze
+NUM_RANDOM_TRACKS: int = 3  # number of random tracks to analyze
+NUM_TOP_ARTISTS: int = 2  # number of top artists to analyze
+NUM_BOTTOM_ARTISTS: int = 2  # number of bottom artists to analyze
+NUM_RANDOM_ARTISTS: int = 2  # number of random artists to analyze
+NUM_RECOMMENDATIONS: int = 5  # number of recommendations to generate
 
 
 async def get_recommendations(playlist_url: str) -> dict:
@@ -62,8 +66,12 @@ async def get_recommendations(playlist_url: str) -> dict:
     print(f"  Subreddit: r/{SUBREDDIT_NAME}")
     print(f"  Max Reddit posts per query: {MAX_REDDIT_POSTS_PER_QUERY}")
     print(f"  Max comments per post: {MAX_COMMENTS_PER_POST}")
-    print(f"  Number of top tracks: {NUM_TOP_TRACKS}")
-    print(f"  Number of top artists: {NUM_TOP_ARTISTS}")
+    print(
+        f"  Top tracks: {NUM_TOP_TRACKS}, Bottom tracks: {NUM_BOTTOM_TRACKS}, Random tracks: {NUM_RANDOM_TRACKS}"
+    )
+    print(
+        f"  Top artists: {NUM_TOP_ARTISTS}, Bottom artists: {NUM_BOTTOM_ARTISTS}, Random artists: {NUM_RANDOM_ARTISTS}"
+    )
     print(f"  GPT Model: {GPT_MODEL}")
     print(f"  GPT Temperature: {GPT_TEMPERATURE}")
     print(f"  GPT Max Tokens: {GPT_MAX_TOKENS}")
@@ -94,7 +102,11 @@ async def get_recommendations(playlist_url: str) -> dict:
         MAX_REDDIT_POSTS_PER_QUERY,
         MAX_COMMENTS_PER_POST,
         NUM_TOP_TRACKS,
+        NUM_BOTTOM_TRACKS,
+        NUM_RANDOM_TRACKS,
         NUM_TOP_ARTISTS,
+        NUM_BOTTOM_ARTISTS,
+        NUM_RANDOM_ARTISTS,
     )
     all_reddit_data = reddit_result["all_reddit_data"]
     top_tracks = reddit_result["top_tracks"]
