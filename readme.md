@@ -52,7 +52,12 @@ The API returns a JSON object with your personalized recommendations:
 ```json
 {
   "success": true,
-  "playlist_name": "My Awesome Playlist",
+  "playlist_details": {
+    "name": "Summer Nights",
+    "owner": "Malik",
+    "total_tracks": 68,
+    "album_art": "https://image-cdn-ak.spotifycdn.com/image/ab67706c0000da848f15c90b02dadc6c6c154bb4"
+  },
   "recommendations": [
     {
       "name": "Watermelon Sugar",
@@ -156,7 +161,7 @@ Only keeps posts/comments containing recommendation keywords:
 - Sends your playlist data + Reddit recommendations to **GPT-4**
 - GPT-4 analyzes patterns in your music taste
 - Considers community recommendations from Reddit
-- Generates **5 new song suggestions** (not in your original playlist)
+- Generates **5 new song suggestions** (not in your original playlist) in order from most to least recomended
 - Returns songs as JSON: `[{"song": "Title", "artist": "Artist"}, ...]`
 
 #### **Step 4: Spotify Verification**
@@ -167,8 +172,8 @@ Only keeps posts/comments containing recommendation keywords:
 
 #### **Step 5: Results Delivery**
 - Returns formatted JSON response with all recommendations
-- Includes metadata about the recommendation process
-- Ready to display in your application
+- Includes metadata about the recommendation process and the users playlist
+- Ready to display in the application
 
 ---
 

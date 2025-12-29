@@ -8,8 +8,6 @@ from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 from typing import Optional
 from main import get_recommendations
-import sys
-import io
 from spotipy.exceptions import SpotifyException
 
 app = FastAPI(
@@ -55,16 +53,8 @@ async def get_song_recommendations(request: RecommendationRequest):
         )
 
     try:
-        # Suppress print output during processing
-        old_stdout = sys.stdout
-        sys.stdout = io.StringIO()
-
-        try:
-            # Call main recommendation function (async)
-            result = await get_recommendations(playlist_url=request.playlist_url)
-        finally:
-            # Restore stdout
-            sys.stdout = old_stdout
+        # Call main recommendation function (async)
+        result = await get_recommendations(playlist_url=request.playlist_url)
 
         # Prepare response
         return RecommendationResponse(
@@ -85,10 +75,6 @@ async def get_song_recommendations(request: RecommendationRequest):
         )
 
     except SpotifyException as e:
-        # Restore stdout if it was redirected
-        if "old_stdout" in locals():
-            sys.stdout = old_stdout
-
         # Handle Spotify API errors consistently
         error_message = str(e)
 
@@ -113,10 +99,6 @@ async def get_song_recommendations(request: RecommendationRequest):
             )
 
     except Exception as e:
-        # Restore stdout if it was redirected
-        if "old_stdout" in locals():
-            sys.stdout = old_stdout
-
         # Generic error handler - internal error
         return RecommendationResponse(
             success=False, error="Internal error. Please try again later."

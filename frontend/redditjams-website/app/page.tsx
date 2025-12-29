@@ -6,11 +6,12 @@ import InitialView from "./components/InitialView";
 import LoadingView from "./components/LoadingView";
 import ResultsView from "./components/ResultsView";
 import ErrorView from "./components/ErrorView";
+import { ApiResponse } from "./types/api";
 
 export default function Home() {
   const [playlistUrl, setPlaylistUrl] = useState("");
   const [loading, setLoading] = useState(false);
-  const [results, setResults] = useState<any>(null);
+  const [results, setResults] = useState<ApiResponse | null>(null);
   const [error, setError] = useState<string | null>(null);
 
   const handleGetRecommendations = async () => {
@@ -34,7 +35,7 @@ export default function Home() {
         body: JSON.stringify({ playlist_url: playlistUrl }),
       });
 
-      const data = await response.json();
+      const data: ApiResponse = await response.json();
       console.log("Response from API:", data);
 
       if (!response.ok || data.success === false) {
@@ -42,7 +43,6 @@ export default function Home() {
         setError(data.error || "Something went wrong. Please try again.");
         setLoading(false);
       } else {
-        console.log("Success! Recommendations:", data);
         setResults(data);
         setLoading(false);
       }

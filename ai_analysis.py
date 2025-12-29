@@ -80,9 +80,11 @@ REDDIT RECOMMENDATIONS FROM r/{subreddit_name}:
 {reddit_summary}
 
 TASK:
-Analyze the user's music taste from their playlist and the Reddit community recommendations. Recommend 5 NEW songs (not in the original playlist) that the user will love.
+Analyze the user's music taste from their playlist and the Reddit community recommendations. Recommend {num_recommendations} NEW songs (not in the original playlist) that the user will love.
 
-IMPORTANT: Return ONLY a JSON array with exactly {num_recommendations} songs in this format:
+IMPORTANT: 
+- Rank the songs from BEST to WORST match (song #1 should be the BEST recommendation, song #{num_recommendations} should be the least good but still great recommendation)
+- Return ONLY a JSON array with exactly {num_recommendations} songs in RANKED ORDER in this format:
 [
   {{"song": "Song Name", "artist": "Artist Name"}},
   {{"song": "Song Name", "artist": "Artist Name"}},
