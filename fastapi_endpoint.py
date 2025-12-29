@@ -47,6 +47,13 @@ async def get_song_recommendations(request: RecommendationRequest):
 
     - **playlist_url**: Spotify playlist URL (required)
     """
+    # Validate that the URL starts with the correct Spotify playlist URL format
+    if not request.playlist_url.startswith("https://open.spotify.com/playlist/"):
+        return RecommendationResponse(
+            success=False,
+            error="Invalid playlist URL. Please provide a valid Spotify playlist link that starts with 'https://open.spotify.com/playlist/'",
+        )
+
     try:
         # Suppress print output during processing
         old_stdout = sys.stdout
