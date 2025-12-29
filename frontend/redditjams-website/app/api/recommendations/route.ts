@@ -15,7 +15,7 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    const BACKEND_URL = "http://0.0.0.0:8000"; // vercel app
+    const BACKEND_URL = "https://reddit-jams-backend.vercel.app"; // vercel app
 
     console.log("Calling FastAPI backend at:", BACKEND_URL);
 
