@@ -82,9 +82,12 @@ REDDIT RECOMMENDATIONS FROM r/{subreddit_name}:
 TASK:
 Analyze the user's music taste from their playlist and the Reddit community recommendations. Recommend {num_recommendations} NEW songs (not in the original playlist) that the user will love.
 
-IMPORTANT: 
-- Rank the songs from BEST to WORST match (song #1 should be the BEST recommendation, song #{num_recommendations} should be the least good but still great recommendation)
-- Return ONLY a JSON array with exactly {num_recommendations} songs in RANKED ORDER in this format:
+IMPORTANT CONSTRAINTS:
+1. Rank the songs from BEST to WORST match (song #1 should be the BEST recommendation, song #{num_recommendations} should be the least good but still great recommendation)
+2. CRITICAL: Do NOT recommend more than 2 songs from the same artist. Each artist can appear AT MOST 2 times in your recommendations.
+3. Song popularity should NOT influence your recommendations. Focus on matching the user's taste regardless of whether songs are mainstream or obscure.
+4. ALWAYS return exactly {num_recommendations} songs, even if you're unsure about the later ones. Since rankings go from best to worst, less perfect matches at the end (like #{num_recommendations}) are acceptable.
+5. Return ONLY a JSON array with exactly {num_recommendations} songs in RANKED ORDER in this format:
 [
   {{"song": "Song Name", "artist": "Artist Name"}},
   {{"song": "Song Name", "artist": "Artist Name"}},

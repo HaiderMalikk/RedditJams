@@ -4,9 +4,14 @@ import { ApiResponse } from "../types/api";
 interface ResultsViewProps {
   data: ApiResponse;
   onReset: () => void;
+  onRegenerate: () => void;
 }
 
-export default function ResultsView({ data, onReset }: ResultsViewProps) {
+export default function ResultsView({
+  data,
+  onReset,
+  onRegenerate,
+}: ResultsViewProps) {
   const { playlist_details, recommendations, metadata } = data;
 
   if (!playlist_details || !recommendations) {
@@ -24,11 +29,17 @@ export default function ResultsView({ data, onReset }: ResultsViewProps) {
 
   return (
     <div className="mx-auto max-w-6xl">
-      {/* Try Another Playlist Button */}
-      <div className="mb-8 text-center">
+      {/* Action Buttons */}
+      <div className="mb-8 flex flex-wrap items-center justify-center gap-4">
+        <button
+          onClick={onRegenerate}
+          className="bg-primary rounded-lg px-8 py-3 font-semibold text-white transition-colors hover:bg-[#E63D00]"
+        >
+          Regenerate Recommendations
+        </button>
         <button
           onClick={onReset}
-          className="bg-primary rounded-lg px-8 py-3 font-semibold text-white transition-colors hover:bg-[#E63D00]"
+          className="rounded-lg border-2 border-black bg-white px-8 py-3 font-semibold text-black transition-colors hover:bg-gray-100"
         >
           Try Another Playlist
         </button>
@@ -139,11 +150,17 @@ export default function ResultsView({ data, onReset }: ResultsViewProps) {
         ))}
       </div>
 
-      {/* Try Another Playlist Button (Bottom) */}
-      <div className="mt-12 text-center">
+      {/* Action Buttons (Bottom) */}
+      <div className="mt-12 flex flex-wrap items-center justify-center gap-4">
+        <button
+          onClick={onRegenerate}
+          className="bg-primary rounded-lg px-8 py-3 font-semibold text-white transition-colors hover:bg-[#E63D00]"
+        >
+          Regenerate Recommendations
+        </button>
         <button
           onClick={onReset}
-          className="bg-primary rounded-lg px-8 py-3 font-semibold text-white transition-colors hover:bg-[#E63D00]"
+          className="rounded-lg border-2 border-black bg-white px-8 py-3 font-semibold text-black transition-colors hover:bg-gray-100"
         >
           Try Another Playlist
         </button>

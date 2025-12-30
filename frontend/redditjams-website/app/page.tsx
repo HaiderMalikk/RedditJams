@@ -20,6 +20,13 @@ export default function Home() {
       return;
     }
 
+    // Scroll to top before showing loading
+    if (typeof window !== "undefined") {
+      window.scrollTo(0, 0);
+      document.documentElement.scrollTop = 0;
+      document.body.scrollTop = 0;
+    }
+
     setLoading(true);
     setResults(null);
     setError(null);
@@ -61,6 +68,11 @@ export default function Home() {
     setPlaylistUrl("");
   };
 
+  const handleRegenerate = async () => {
+    if (!playlistUrl) return;
+    await handleGetRecommendations();
+  };
+
   return (
     <div className="min-h-screen overflow-x-hidden bg-white font-sans">
       {/* Main Content */}
@@ -78,7 +90,11 @@ export default function Home() {
         {error && <ErrorView error={error} onReset={handleReset} />}
 
         {results && !error && (
-          <ResultsView data={results} onReset={handleReset} />
+          <ResultsView
+            data={results}
+            onReset={handleReset}
+            onRegenerate={handleRegenerate}
+          />
         )}
       </main>
 
